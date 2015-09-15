@@ -8,7 +8,7 @@ emailUser = ${sendTo} # probably the same
 emailPw   = Y0urPassw0rd
 
 build:
-	docker build -t ${image} .
+	@docker build -t ${image} .
 
 run = docker run ${1}        \
   --name ${container}        \
@@ -21,10 +21,10 @@ run = docker run ${1}        \
   ${image}
 
 run: clean
-	$(call run,-d)
+	@$(call run,-d)
 
 run-loud: clean
-	$(call run,-it)
+	@$(call run,-it)
 
 clean:
-	docker rm ${container}
+	@docker rm ${container}
